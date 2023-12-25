@@ -25,7 +25,7 @@ public class FormBooks extends javax.swing.JPanel {
 		table1.addTableCell(new CellString("Isbn"), 0);
 		table1.addTableCell(new CellString("Title"), 1);
 		table1.addTableCell(new CellInt("Page Count"), 2);
-		table1.addTableCell(new CellDate("Published Date"), 3);
+		table1.addTableCell(new CellDate("Published Date",3), 3);
 		table1.addTableCell(new Celltext("Description"), 4);
 		table1.addTableCell(new CellAction("Books"), 5);
 		metier.getAll().stream()
