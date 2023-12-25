@@ -6,7 +6,6 @@ import com.raven.table.model.TableRowData;
 
 public class CellInt extends TableCustomCell {
 	String title;
-
 	public CellInt(String title) {
 		this.title = title;
 		initComponents();
@@ -23,7 +22,7 @@ public class CellInt extends TableCustomCell {
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
 		this.setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
 				.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(jLabel1)
 						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 						.addComponent(txt, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)

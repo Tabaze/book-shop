@@ -6,16 +6,22 @@ import com.raven.model.ModelBooks;
 import com.raven.table.TableCustom;
 import com.raven.table.cell.TableCustomCell;
 import com.raven.table.model.TableRowData;
-import java.awt.Component;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
+@SuppressWarnings("serial")
 public class CellAction extends TableCustomCell {
 	private String entity;
-	private TableRowData rowData; // Store a reference to the current row data
-	private com.raven.swing.Button cmdDelete;
+	private TableRowData rowData;
+	private TableRowData updatedData;
 	private com.raven.swing.Button cmdEdit;
+	private com.raven.swing.Button cmdDelete;
+	@SuppressWarnings("rawtypes")
 	IMerier metier;
 
 	public CellAction(String entity) {
@@ -28,31 +34,51 @@ public class CellAction extends TableCustomCell {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				if (data.isEditing()) {
-					table.cancelEditRowAt(row);
 					cmdEdit.setIcon(new ImageIcon(getClass().getResource("/com/raven/icon/edit.png")));
+					table.cancelEditRowAt(row);
 				} else {
-					table.editRowAt(row);
 					cmdEdit.setIcon(new ImageIcon(getClass().getResource("/com/raven/icon/cancel.png")));
+					table.editRowAt(row);
 				}
 			}
 		});
 
 		cmdDelete.addActionListener(new ActionListener() {
+			@SuppressWarnings("unchecked")
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				switch (entity) {
 				case "Books":
 					metier = new BookMetier();
-					if(metier.delete(((ModelBooks) rowData).getBook())) {
+					if (metier.delete(((ModelBooks) rowData).getBook())) {
 						table.deleteRowAt(getRow(), true);
 					}
 					break;
 				}
 			}
 		});
+
+		// Add a focus listener to prevent icon change when interacting with a text
+		// field
+		this.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				cmdEdit.setIcon(new ImageIcon(getClass().getResource("/com/raven/icon/edit.png")));
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				cmdEdit.setIcon(new ImageIcon(getClass().getResource("/com/raven/icon/edit.png")));
+			}
+		});
 	}
 
-	private void checkIcon(TableRowData data) {
+	private boolean isCheckIcon() {
+		ImageIcon checkIcon = new ImageIcon(getClass().getResource("/com/raven/icon/check.png"));
+		return cmdEdit.getIcon().equals(checkIcon);
+	}
+
+	public void checkIcon(TableRowData data) {
 		if (data.isEditing()) {
 			cmdEdit.setIcon(new ImageIcon(getClass().getResource("/com/raven/icon/cancel.png")));
 		} else {
@@ -60,7 +86,6 @@ public class CellAction extends TableCustomCell {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void initComponents() {
 		cmdEdit = new com.raven.swing.Button();
 		cmdDelete = new com.raven.swing.Button();
@@ -92,13 +117,12 @@ public class CellAction extends TableCustomCell {
 
 	@Override
 	public void setData(Object o) {
-		// Set the current row data
 		this.rowData = (TableRowData) o;
 	}
 
 	@Override
 	public Object getData() {
-		return rowData;
+		return updatedData != null ? updatedData : rowData;
 	}
 
 	@Override
