@@ -30,6 +30,13 @@ public class FormBooks extends javax.swing.JPanel {
 		table1.addTableCell(new CellAction("Books"), 5);
 		metier.getAll().stream()
 		.forEach(book -> table1.addRow(new ModelBooks(book), false));
+
+		table1.getColumnModel().getColumn(0).setWidth(5);
+		table1.getColumnModel().getColumn(1).setWidth(5);
+		table1.getColumnModel().getColumn(2).setWidth(5);
+		table1.getColumnModel().getColumn(3).setWidth(5);
+		table1.getColumnModel().getColumn(4).setWidth(150);
+		table1.getColumnModel().getColumn(5).setWidth(20);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -44,20 +51,16 @@ public class FormBooks extends javax.swing.JPanel {
 
 		javax.swing.GroupLayout roundPanel1Layout = new javax.swing.GroupLayout(roundPanel1);
 		roundPanel1.setLayout(roundPanel1Layout);
-//        roundPanel1Layout.setHorizontalGroup(
-//            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(roundPanel1Layout.createSequentialGroup()
-//                .addContainerGap()
-//                .addComponent(chart, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
-//                .addContainerGap())
-//        );
-//        roundPanel1Layout.setVerticalGroup(
-//            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(roundPanel1Layout.createSequentialGroup()
-//                .addContainerGap()
-//                .addComponent(chart, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-//                .addContainerGap())
-//        );
+        roundPanel1Layout.setHorizontalGroup(
+            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundPanel1Layout.createSequentialGroup()
+                .addContainerGap())
+        );
+        roundPanel1Layout.setVerticalGroup(
+            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundPanel1Layout.createSequentialGroup()
+                .addContainerGap())
+        );
 
 		roundPanel2.setBackground(new java.awt.Color(60, 60, 60));
 
@@ -65,14 +68,6 @@ public class FormBooks extends javax.swing.JPanel {
 
 		}, new String[] { "Isbn", "Title", "Page Count", "Published Date", "Description","" }));
 		jScrollPane1.setViewportView(table1);
-		if (table1.getColumnModel().getColumnCount() > 0) {
-			table1.getColumnModel().getColumn(0).setWidth(5);
-			table1.getColumnModel().getColumn(1).setWidth(5);
-			table1.getColumnModel().getColumn(2).setWidth(5);
-			table1.getColumnModel().getColumn(3).setWidth(5);
-			table1.getColumnModel().getColumn(4).setWidth(150);
-			table1.getColumnModel().getColumn(5).setWidth(20);
-		}
 
 		javax.swing.GroupLayout roundPanel2Layout = new javax.swing.GroupLayout(roundPanel2);
 		roundPanel2.setLayout(roundPanel2Layout);
