@@ -39,7 +39,7 @@ public class ModelName {
     public ModelName(String firstName, String lastName, Icon profile, String path) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.profile = profile;
+//        this.profile = profile;
         this.path = path;
     }
 

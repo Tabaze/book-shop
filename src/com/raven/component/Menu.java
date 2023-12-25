@@ -49,16 +49,10 @@ public class Menu extends javax.swing.JPanel {
 
     public void initMenu(MenuEvent event) {
         this.event = event;
-        addMenu("1", "Dashboard", 0);
-        addMenu("2", "Staff", 1);
-        addMenu("3", "Product", 2);
-        split("Report");
-        addMenu("4", "Report Income", 3);
-        addMenu("5", "Report Expense", 4);
-        addMenu("6", "Report Staff", 5);
-        addMenu("7", "Accounting", 6);
+        addMenu("dashboard", "Dashboard", 0);
+        addMenu("open-book", "Books", 1);
         space();
-        addMenu("key", "Logout", 7);
+        addMenu("logout", "Logout", 7);
     }
 
     private void addMenu(String icon, String text, int index) {
@@ -107,7 +101,6 @@ public class Menu extends javax.swing.JPanel {
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
         jLabel1 = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
         panelMenu = new javax.swing.JPanel();

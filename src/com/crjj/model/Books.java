@@ -112,4 +112,11 @@ public class Books {
 
 	@Column(name = "status")
 	public String status;
+
+	@Override
+	public String toString() {
+		return "Books [idBook=" + idBook + ", title=" + title + ", isbn=" + isbn + ", pageCount=" + pageCount
+				+ ", publishedDate=" + publishedDate + ", thumbnailUrl=" + thumbnailUrl + ", shortDescription="
+				+ shortDescription + ", status=" + status + "]";
+	}
 }

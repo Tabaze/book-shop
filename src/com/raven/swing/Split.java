@@ -9,7 +9,6 @@ public class Split extends javax.swing.JPanel {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         labelSplite1 = new com.raven.swing.LabelSplit();
@@ -41,11 +40,8 @@ public class Split extends javax.swing.JPanel {
                     .addComponent(labelSplite2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
-    }// </editor-fold>//GEN-END:initComponents
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    }
     private javax.swing.JLabel label;
     private com.raven.swing.LabelSplit labelSplite1;
     private com.raven.swing.LabelSplit labelSplite2;
-    // End of variables declaration//GEN-END:variables
 }
